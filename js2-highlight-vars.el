@@ -203,3 +203,5 @@ cursor in js2-mode buffers"
     (kill-local-variable js2--highlight-vars-current-token)))
 
 (provide 'js2-highlight-vars)
+
+;;; js2-highlight-vars.el ends here
