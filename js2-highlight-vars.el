@@ -2,7 +2,7 @@
 
 ;; Copyright (C) 2009  Free Software Foundation, Inc.
 ;; Author:  Mihai Bazon <mihai.bazon@gmail.com>
-;; Version: 0.1
+;; Version: 0.1.0
 ;; URL: http://mihai.bazon.net/projects/editing-javascript-with-emacs-js2-mode/js2-highlight-vars-mode
 ;; Package-Requires: ((js2-mode "20150909"))
 
