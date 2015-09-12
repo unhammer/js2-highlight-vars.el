@@ -68,7 +68,7 @@
               js2--highlight-vars-current-token (js2-node-abs-pos node)
               js2--highlight-vars-current-token-name name)
         (setq scope (js2-get-defining-scope scope name))
-        (js2-with-unmodifying-text-property-changes
+        (with-silent-modifications
           (js2-visit-ast
            scope
            (lambda (node end-p)
