@@ -109,8 +109,7 @@
                  (overlay-put ovl 'evaporate t)
                  (overlay-put ovl 'js2-highlight-vars t)))
              t)))
-        (setq js2--highlight-vars-tokens tokens)
-        (top-level)))))
+        (setq js2--highlight-vars-tokens tokens)))))
 
 (defun js2-highlight-vars-next ()
   (interactive)
