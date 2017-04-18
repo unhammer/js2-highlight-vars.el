@@ -145,22 +145,24 @@
         (ovl (make-overlay 1 1))
         (all nil)
         doit)
-    (overlay-put ovl 'face 'highlight)
-    (dolist (pos (mapcar (lambda(pos)
-                           (let ((m (make-marker)))
-                             (set-marker m pos))) js2--highlight-vars-tokens))
-      (goto-char pos)
-      (move-overlay ovl pos (+ pos len))
-      (setq doit (if all
-                     ?y
-                   (read-char "Replace this occurrence? (y/n/!)")))
-      (when (= doit ?!)
-        (setq all t
-              doit ?y))
-      (when (= doit ?y)
-        (insert new-name)
-        (delete-char len)))
-    (delete-overlay ovl)))
+    (unwind-protect
+        (progn
+          (overlay-put ovl 'face 'highlight)
+          (dolist (pos (mapcar (lambda(pos)
+                                 (let ((m (make-marker)))
+                                   (set-marker m pos))) js2--highlight-vars-tokens))
+            (goto-char pos)
+            (move-overlay ovl pos (+ pos len))
+            (setq doit (if all
+                           ?y
+                         (read-char "Replace this occurrence? (y/n/!)")))
+            (when (= doit ?!)
+              (setq all t
+                    doit ?y))
+            (when (= doit ?y)
+              (insert new-name)
+              (delete-char len))))
+      (delete-overlay ovl))))
 
 (defun js2--unhighlight-vars (&rest ignore)
   (setq js2--highlight-vars-tokens nil
